@@ -18,11 +18,15 @@ struct ContentView: View {
 	// User interface content and layout
     var body: some View {
 		VStack {
+			Spacer()
+			
 			// Target row
 			HStack {
 				Text("Put the bullseye as close as you can to:")
 				Text("100")
 			}
+			
+			Spacer()
 			
 			// Slider row
 			
@@ -31,6 +35,8 @@ struct ContentView: View {
 				Slider(value: .constant(10))
 				Text("100")
 			}
+			
+			Spacer()
 			
 			// Button row
 			Button(action: {
@@ -45,6 +51,8 @@ struct ContentView: View {
 					.default(Text("Awesome!")))
 			})
 			
+			Spacer()
+			
 			// Score row
 			
 			HStack {
@@ -53,17 +61,20 @@ struct ContentView: View {
 				}) {
 					Text("Start over")
 				}
+				Spacer()
 				Text("Score:")
 				Text("999999")
+				Spacer()
 				Text("Round:")
 				Text("999")
+				Spacer()
 				Button(action: {
 					
 				}) {
 					Text("Info")
 				}
-				
 			}
+			.padding(.bottom, 20)
 
 		}
     }
