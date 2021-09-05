@@ -48,7 +48,7 @@ struct ContentView: View {
 			}
 			.alert(isPresented: self.$alertIsVisible, content: {
 				Alert(title: Text("Hello there!"),
-					  message: Text("This is my first pop-up!"), dismissButton:
+					  message: Text("The slider's value is \(Int(self.sliderValue.rounded()))"), dismissButton:
 					.default(Text("Awesome!")))
 			})
 			
