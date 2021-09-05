@@ -42,7 +42,7 @@ struct ContentView: View {
 			
 			// Button row
 			Button(action: {
-				print("Button pressed!")
+				print("Points awarded: \(self.pointsForCurrentRound())")
 				self.alertIsVisible = true
 			}) {
 				Text("Hit me!")
@@ -82,6 +82,18 @@ struct ContentView: View {
     }
 	// Methods
 	// =======
+	
+	func pointsForCurrentRound() -> Int {
+		var difference: Int
+		if Int(self.sliderValue.rounded()) > self.target {
+			difference = Int(self.sliderValue.rounded()) - self.target
+		} else if Int(self.sliderValue.rounded()) < self.target {
+			difference = self.target - Int(self.sliderValue.rounded())
+		} else {
+			difference = 0
+		}
+		return 100 - difference
+	}
 }
 
 // Preview
