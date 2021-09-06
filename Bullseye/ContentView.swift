@@ -20,6 +20,7 @@ struct ContentView: View {
 		Int(self.sliderValue.rounded())
 	}
 	@State var score = 0
+	@State var round = 1
 	
 	// User interface content and layout
     var body: some View {
@@ -56,6 +57,7 @@ struct ContentView: View {
 						.default(Text("Awesome!")) {
 							self.score = self.score + self.pointsForCurrentRound()
 							self.target = Int.random(in: 1...100)
+							self.round = self.round + 1
 						}
 				)
 			})
@@ -75,7 +77,7 @@ struct ContentView: View {
 				Text("\(self.score)")
 				Spacer()
 				Text("Round:")
-				Text("999")
+				Text("\(self.round)")
 				Spacer()
 				Button(action: {
 					
