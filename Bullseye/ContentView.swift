@@ -16,10 +16,10 @@ struct ContentView: View {
 	@State var alertIsVisible = false
 	@State var sliderValue = 50.0
 	@State var target = Int.random(in: 1...100)
-	
 	var sliderValueRounded: Int {
 		Int(self.sliderValue.rounded())
 	}
+	@State var score = 0
 	
 	// User interface content and layout
     var body: some View {
@@ -46,7 +46,6 @@ struct ContentView: View {
 			
 			// Button row
 			Button(action: {
-				print("Points awarded: \(self.pointsForCurrentRound())")
 				self.alertIsVisible = true
 			}) {
 				Text("Hit me!")
@@ -54,7 +53,11 @@ struct ContentView: View {
 			.alert(isPresented: self.$alertIsVisible, content: {
 				Alert(title: Text("Hello there!"),
 					  message: Text(self.scoringMessage()), dismissButton:
-					.default(Text("Awesome!")))
+						.default(Text("Awesome!")) {
+							self.score = self.score + self.pointsForCurrentRound()
+							self.target = Int.random(in: 1...100)
+						}
+				)
 			})
 			
 			Spacer()
@@ -69,7 +72,7 @@ struct ContentView: View {
 				}
 				Spacer()
 				Text("Score:")
-				Text("999999")
+				Text("\(self.score)")
 				Spacer()
 				Text("Round:")
 				Text("999")
@@ -88,15 +91,9 @@ struct ContentView: View {
 	// =======
 	
 	func pointsForCurrentRound() -> Int {
-		let difference: Int
-		if self.sliderValueRounded > self.target {
-			difference = self.sliderValueRounded - self.target
-		} else if self.sliderValueRounded < self.target {
-			difference = self.target - self.sliderValueRounded
-		} else {
-			difference = 0
-		}
-		return 100 - difference
+		let maximumScore = 100
+		let difference = abs(self.sliderValueRounded - self.target)
+		return maximumScore - difference
 	}
 	
 	func scoringMessage() -> String {
