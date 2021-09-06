@@ -13,9 +13,9 @@ struct ContentView: View {
 	// ==========
 	
 	// User interface views
-	@State var alertIsVisible: Bool = false
-	@State var sliderValue: Double = 50.0
-	@State var target: Int = Int.random(in: 1...100)
+	@State var alertIsVisible = false
+	@State var sliderValue = 50.0
+	@State var target = Int.random(in: 1...100)
 	
 	var sliderValueRounded: Int {
 		Int(self.sliderValue.rounded())
