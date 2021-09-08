@@ -92,6 +92,7 @@ struct ContentView: View {
 		.onAppear() {
 			self.startNewGame()
 		}
+		.background(Image("Background"))
     }
 	// Methods
 	// =======
