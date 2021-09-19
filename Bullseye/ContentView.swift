@@ -30,95 +30,96 @@ struct ContentView: View {
 	
 	// User interface content and layout
     var body: some View {
-		VStack {
-			Spacer()
-			
-			// Target row
-			HStack {
-				Text("Put the bullseye as close as you can to:")
-					.modifier(LabelStyle())
-				Text("\(target)")
-					.modifier(ValueStyle())
-			}
-			Spacer()
-			
-			// Slider row
-			
-			HStack {
-				Text("1")
-					.modifier(LabelStyle())
-				Slider(value: $sliderValue, in: 1...100)
-					.accentColor(goGreenColor)
-				Text("100")
-					.modifier(LabelStyle())
-			}
-			
-			Spacer()
-			
-			// Button row
-			Button(action: {
-				self.alertIsVisible = true
-			}) {
-				Text("Hit me!")
-					.modifier(ButtonLargeTextStyle())
-			}
-			.background(Image("Button"))
-			.modifier(Shadow())
-			.alert(isPresented: $alertIsVisible, content: {
-				Alert(title: Text(alertTitle()),
-					  message: Text(scoringMessage()), dismissButton:
-						.default(Text("Awesome!")) {
-							self.startNewRound()
+		NavigationView {
+			VStack {
+				Spacer()
+				
+				// Target row
+				HStack {
+					Text("Put the bullseye as close as you can to:")
+						.modifier(LabelStyle())
+					Text("\(target)")
+						.modifier(ValueStyle())
+				}
+				Spacer()
+				
+				// Slider row
+				
+				HStack {
+					Text("1")
+						.modifier(LabelStyle())
+					Slider(value: $sliderValue, in: 1...100)
+						.accentColor(goGreenColor)
+					Text("100")
+						.modifier(LabelStyle())
+				}
+				
+				Spacer()
+				
+				// Button row
+				Button(action: {
+					self.alertIsVisible = true
+				}) {
+					Text("Hit me!")
+						.modifier(ButtonLargeTextStyle())
+				}
+				.background(Image("Button"))
+				.modifier(Shadow())
+				.alert(isPresented: $alertIsVisible, content: {
+					Alert(title: Text(alertTitle()),
+						  message: Text(scoringMessage()), dismissButton:
+							.default(Text("Awesome!")) {
+								self.startNewRound()
+							}
+					)
+				})
+				
+				Spacer()
+				
+				// Score row
+				
+				HStack {
+					Button(action: {
+						self.startNewGame()
+					}) {
+						HStack {
+							Image("StartOverIcon")
+							Text("Start over")
+								.modifier(ButtonSmallTextStyle())
 						}
-				)
-			})
-			
-			Spacer()
-			
-			// Score row
-			
-			HStack {
-				Button(action: {
-					self.startNewGame()
-				}) {
-					HStack {
-						Image("StartOverIcon")
-						Text("Start over")
-							.modifier(ButtonSmallTextStyle())
 					}
-				}
-				.background(Image("Button"))
-				.modifier(Shadow())
-				Spacer()
-				Text("Score:")
-					.modifier(LabelStyle())
-				Text("\(score)")
-					.modifier(ValueStyle())
-				Spacer()
-				Text("Round:")
-					.modifier(LabelStyle())
-				Text("\(round)")
-					.modifier(ValueStyle())
-				Spacer()
-				Button(action: {
-					
-				}) {
-					HStack {
-						Image("InfoIcon")
-						Text("Info")
-							.modifier(ButtonSmallTextStyle())
+					.background(Image("Button"))
+					.modifier(Shadow())
+					Spacer()
+					Text("Score:")
+						.modifier(LabelStyle())
+					Text("\(score)")
+						.modifier(ValueStyle())
+					Spacer()
+					Text("Round:")
+						.modifier(LabelStyle())
+					Text("\(round)")
+						.modifier(ValueStyle())
+					Spacer()
+					NavigationLink(destination: AboutView()) {
+						HStack {
+							Image("InfoIcon")
+							Text("Info")
+								.modifier(ButtonSmallTextStyle())
+						}
 					}
+					.background(Image("Button"))
+					.modifier(Shadow())
 				}
-				.background(Image("Button"))
-				.modifier(Shadow())
-			}
-			.padding(.bottom, 20)
+				.padding(.bottom, 20)
 
+			}
+			.onAppear() {
+				self.startNewGame()
+			}
+			.background(Image("Background"))
 		}
-		.onAppear() {
-			self.startNewGame()
-		}
-		.background(Image("Background"))
+		.navigationViewStyle(StackNavigationViewStyle())
     }
 	// Methods
 	// =======
