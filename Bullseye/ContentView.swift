@@ -50,6 +50,7 @@ struct ContentView: View {
 						.modifier(LabelStyle())
 					Slider(value: $sliderValue, in: 1...100)
 						.accentColor(goGreenColor)
+						.animation(.easeOut)
 					Text("100")
 						.modifier(LabelStyle())
 				}
