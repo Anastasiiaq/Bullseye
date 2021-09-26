@@ -54,6 +54,7 @@ struct ContentView: View {
 					Text("100")
 						.modifier(LabelStyle())
 				}
+				.padding(.horizontal, 30)
 				
 				Spacer()
 				
@@ -113,7 +114,8 @@ struct ContentView: View {
 					.modifier(Shadow())
 				}
 				.padding(.bottom, 20)
-
+				.padding(.leading, 21)
+				.padding(.trailing, 40)
 			}
 			.onAppear() {
 				self.startNewGame()
