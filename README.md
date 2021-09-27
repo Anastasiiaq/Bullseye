@@ -6,6 +6,8 @@ The goal of the game is to bring the bullseye as close as possible to the goal. 
 
 The Bullseye game tutorial from Ray Wenderlich's The iOS Apprentice book.
 
+<img width="640" alt="bullseye" src="https://github.com/Anastasiiaq/Bullseye/blob/master/screenshots/bullseye.gif">
+
 The main view:
 
 ![alt text](https://github.com/Anastasiiaq/Bullseye/blob/master/screenshots/startGame.jpeg "startGame")
