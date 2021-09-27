@@ -8,12 +8,12 @@ The Bullseye game tutorial from Ray Wenderlich's The iOS Apprentice book.
 
 The main view:
 
-![alt text](https://github.com/Anastasiiaq/Bullseye/blob/master/screenshots/startGame.jpeg "startGame")
+![alt text](https://github.com/Anastasiiaq/screenshots/blob/master/Bullseye/startGame.jpeg "startGame")
 
 The view if you are close to the target:
 
-![alt text](https://github.com/Anastasiiaq/Bullseye/blob/master/screenshots/goodTry.jpeg "goodTry")
+![alt text](https://github.com/Anastasiiaq/screenshots/blob/master/Bullseye/goodTry.jpeg "goodTry")
 
 The view if you hit the target:
 
-![alt text](https://github.com/Anastasiiaq/Bullseye/blob/master/screenshots/perfect.jpeg "perfect")
+![alt text](https://github.com/Anastasiiaq/screenshots/blob/master/Bullseye/perfect.jpeg "perfect")
